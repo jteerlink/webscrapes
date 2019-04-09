@@ -23,12 +23,9 @@ browser.visit(url)
 
 
 df=pd.DataFrame()
-for z in zipcodes.zip_code[5000:10000:5]:
+for z in zipcodes.zip_code[25000:30000:5]:
     browser.cookies.delete()
-    try:
-        browser.find_by_name(name="ctl00$pageContent$FindADealer$dealerLocator").fill(z)
-    except:
-        browser.find_by_name(name="ctl00$pageContent$FindADealer$dealerLocator").fill(z)
+    browser.find_by_name(name="ctl00$pageContent$FindADealer$dealerLocator").fill(z)
     browser.find_by_id("pageContent_FindADealer_btnSubmit").click()
     html = browser.html
     carrier_soup = BeautifulSoup(html, 'html.parser')
@@ -72,4 +69,4 @@ params = urllib.parse.quote_plus('DRIVER={SQL Server Native Client 10.0};Server=
 engine = create_engine("mssql+pyodbc:///?odbc_connect=%s" % params)
 d2.to_sql('GBU_Webscrape',engine,if_exists='append',index=False)
 
-print('2 of 8 complete...')
+print('5 of 8 complete...')
