@@ -26,7 +26,7 @@ def carrier_scrape(zip_start,zip_end):
     
     try:
         df=pd.DataFrame()
-        for z in zipcodes.zip_code[zip_start:zip_end:5]:
+        for z in zipcodes.zip_code[zip_start:zip_end:3]:
             browser.cookies.delete()
             try:
                 browser.find_by_name(name="ctl00$pageContent$FindADealer$dealerLocator").fill(z)
